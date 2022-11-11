@@ -12,8 +12,6 @@ fs.readFile('./Doc/blog1.txt', (err, data) =>
 fs.writeFile('./Doc/blog1.txt', ('tun', 'jack'), () => {
     console.log('file has been written')
 }) 
-
-
 // create the new doc or new file
 fs.writeFile('./Doc/blog2.txt', 'votey', () =>
 {

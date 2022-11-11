@@ -4,23 +4,37 @@ const fs = require('fs');
 
 
 
-const server = http.createServer((req, res) =>
+const server = http.createServer((request, respone) =>
 {
-    res.writeHead(200, {'Content-Type': 'text/plain'})
-    res.end('hello')
+    console.log(request.url, request.method)
+    //set head contain type
+    respone.setHeader('Content-Type', 'text/html')
     // console.log('request has been made', req.url, req.method)
-
     //header 
-
     // fetching from index.html 
-    fs.readFile('./Doc/index.html', (err, data) => 
+
+
+    // request
+    let path = './Doc/';
+    switch(request.url){
+        case '/':
+            path += 'index.html';
+            break;
+        case '/about':
+            path += 'about.html';
+            break;
+        default:
+            path += '404.html';
+            break;
+    }
+   
+    fs.readFile(path, (err, data) => 
     {
         if(err){
             console.log(err)
-            res.end();
-        } else {
-            res.write(data)
-            res.end();
+            respone.end();
+        }else {
+            respone.end(data);
         }
     })
     
