@@ -41,7 +41,6 @@ const server = http.createServer((request, respone) =>
     }
    
     // reading directory
-
     fs.readFile(path, (err, data) => 
     {
         if(err){
