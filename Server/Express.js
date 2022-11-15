@@ -14,7 +14,18 @@ app.get('/about', (req, res) => {
     res.sendFile('./Doc/about.html', {root: __dirname})
 })
 
+//redirect 
 
+app.get('/about-me', (req, res) => {
+    res.redirect('./about')
+})
+
+
+// take the exception above conditions 
+app.use((req, res) => 
+{
+    res.sendFile('./Doc/404.html', {root: __dirname})
+})
 
 
 const Port = 3001;
